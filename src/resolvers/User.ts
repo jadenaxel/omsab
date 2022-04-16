@@ -11,8 +11,13 @@ class UserResolver {
 		return await Usuario.find();
 	}
 
+	@Query(() => User)
+	async getUserById(@Arg('id') id: string) {
+		return await Usuario.findById(id);
+	}
+
 	@Mutation(() => User)
-	async insertUser(
+	async addUser(
 		@Arg('name') name: string,
 		@Arg('lastname') lastname: string,
 		@Arg('email') email: string,

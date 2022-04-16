@@ -5,6 +5,9 @@ import { ObjectType, Field } from 'type-graphql';
 
 @ObjectType()
 export class User {
+	@Field()
+	_id: string;
+
 	@Field(() => String)
 	@prop({ required: true })
 	name: string;
@@ -14,7 +17,7 @@ export class User {
 	lastname: string;
 
 	@Field(() => String)
-	@prop({ required: true })
+	@prop({ unique: true, required: true })
 	email: string;
 
 	@Field(() => String)

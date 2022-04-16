@@ -1,3 +1,5 @@
-import resolvers from './resolvers';
+/** @format */
 
-export { resolvers };
+import User from './User';
+
+export { User };

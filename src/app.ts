@@ -5,13 +5,13 @@ import cors from 'cors';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchemaSync } from 'type-graphql';
 
-import { resolvers } from './resolvers';
+import { User } from './resolvers';
 
 export default class Server {
 	private app: Application = express();
 	private server = new ApolloServer({
 		schema: buildSchemaSync({
-			resolvers: [resolvers],
+			resolvers: [User],
 		}),
 	});
 
@@ -22,7 +22,7 @@ export default class Server {
 
 	private async setting(): Promise<void> {
 		this.app.set('port', process.env.APP_PORT || 4894);
-		this.app.use(cors());
+		this.app.use(cors({ origin: '*' }));
 		await this.server.start();
 		this.server.applyMiddleware({ app: this.app });
 	}
