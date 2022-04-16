@@ -1,6 +1,7 @@
 /** @format */
 
 import { Resolver, Mutation, Query, Arg } from 'type-graphql';
+import { resolve } from 'path';
 
 import { User, Usuario } from '../models';
 
@@ -28,6 +29,7 @@ class UserResolver {
 		user.lastname = lastname;
 		user.email = email;
 		user.password = password;
+		user.profile = '/public/default.jpg';
 		return await user.save();
 	}
 }

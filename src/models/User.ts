@@ -23,6 +23,18 @@ export class User {
 	@Field(() => String)
 	@prop({ required: true })
 	password: string;
+
+	@Field(() => String)
+	@prop({ required: true })
+	profile: string;
+
+	@Field(() => String)
+	@prop({ type: String, default: '' })
+	province: string;
+
+	@Field(() => String)
+	@prop({ type: String, default: '' })
+	city: string;
 }
 
 export default getModelForClass(User);

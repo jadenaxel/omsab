@@ -16,8 +16,13 @@ export default class Server {
 	});
 
 	constructor() {
+		this.middlewares();
 		this.setting();
 		this.listen();
+	}
+
+	private middlewares(): void {
+		this.app.use('/public', express.static(__dirname + '/public'));
 	}
 
 	private async setting(): Promise<void> {
